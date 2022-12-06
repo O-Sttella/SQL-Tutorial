@@ -24,5 +24,121 @@ SQL is a standard language for accessing and manipulating databases.
 
 </details>
 
-+LOGICAL OPERATORS
+<details>
+    <summary>2. sample</summary>
+
+```bs
+
+```
+
+```bs
+
+```
+
+</details>
+
+<details>
+    <summary>3. sample</summary>
+
+```bs
+
+```
+
+```bs
+
+```
+
+</details>
+
+<details>
+    <summary>4. sample</summary>
+
+```bs
+
+```
+
+```bs
+
+```
+
+</details>
+
+<details>
+    <summary>5. sample</summary>
+
+```bs
+
+```
+
+```bs
+
+```
+
+</details>
+
+<details>
+    <summary>6. sample</summary>
+
+```bs
+
+```
+
+```bs
+
+```
+
+</details>
+
+<details>
+    <summary>7. sample</summary>
+
+```bs
+
+```
+
+```bs
+
+```
+
+</details>
+
+<details>
+    <summary>8. sample</summary>
+
+```bs
+
+```
+
+```bs
+
+```
+
+</details>
+
+<details>
+    <summary>9. sample</summary>
+
+```bs
+
+```
+
+```bs
+
+```
+
+</details>
+
+<details>
+    <summary>10. sample</summary>
+
+```bs
+
+```
+
+```bs
+
+```
+
+</details>
+
 
