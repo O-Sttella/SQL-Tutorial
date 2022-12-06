@@ -2,3 +2,5 @@
 Learn SQL by Stella
 
 ## Tutorial
+
+---
