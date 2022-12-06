@@ -43,14 +43,14 @@ SELECT CustomerName, City FROM Customers;
 </details>
 
 <details>
-    <summary>4. sample</summary>
+    <summary>4. Select DISTINCT - Without Duplicates</summary>
 
 ```bs
-
+SELECT DISTINCT Country FROM Customers;
 ```
 
 ```bs
-
+SELECT COUNT(DISTINCT Country) FROM Customers;
 ```
 
 </details>
