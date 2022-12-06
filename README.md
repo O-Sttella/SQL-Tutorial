@@ -25,14 +25,10 @@ SQL is a standard language for accessing and manipulating databases.
 </details>
 
 <details>
-    <summary>2. sample</summary>
+    <summary>2. Select all from Table</summary>
 
 ```bs
-
-```
-
-```bs
-
+SELECT * FROM Customers;
 ```
 
 </details>
