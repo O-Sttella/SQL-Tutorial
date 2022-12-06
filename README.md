@@ -34,14 +34,10 @@ SELECT * FROM Customers;
 </details>
 
 <details>
-    <summary>3. sample</summary>
+    <summary>3. Select multiple columns from Table</summary>
 
 ```bs
-
-```
-
-```bs
-
+SELECT CustomerName, City FROM Customers;
 ```
 
 </details>
