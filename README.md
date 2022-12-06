@@ -5,4 +5,4 @@ Learn SQL by Stella
 
 ---
 
-### [Google](http://google.com)
+### [1-SQL TUTORIAL-W3SCHOOLS](https://www.w3schools.com/sql/)
