@@ -56,10 +56,27 @@ SELECT COUNT(DISTINCT Country) FROM Customers;
 </details>
 
 <details>
-    <summary>5. sample</summary>
+    <summary>5. SQL WHERE CLAUSE</summary>
 
 ```bs
+The WHERE Clause is used to filter data. It can be combined with numerical, logical operators and the LIKE, BETWEEN and IN clauses. 
 
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+Operator	Description	Example
+=	Equal	
+>	Greater than	
+<	Less than	
+>=	Greater than or equal	
+<=	Less than or equal	
+<>	Not equal. Note: In some versions of SQL this operator may be written as !=	
+BETWEEN	Between a certain range	
+LIKE	Search for a pattern	
+IN	To specify multiple possible values for a column
+
+Excel -> File -> Export -
 ```
 
 ```bs
