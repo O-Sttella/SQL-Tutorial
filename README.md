@@ -95,6 +95,75 @@ THEY CAN ALSO BE COMBINED
 SELECT * FROM Customers
 WHERE Country='Germany' AND (City='Berlin' OR City='München');
 
+SQL ORDER BY and LIMIT KEY WORDS
+
+The ORDER BY keyword sorts the records in ascending order by default. To sort the records in descending order, use the DESC keyword. NOTE THAT multiple columns can be ordered in one code. 
+The LIMIT keyword specifies how many of the ordered values to be returned. 
+
+SELECT * FROM Customers
+ORDER BY Country ASC, CustomerName DESC;
+LIMIT 5
+
+SQL INSERT INTO KEYWORD
+
+It is possible to write the INSERT INTO statement in two ways:
+Specify both the column names and the values to be inserted:
+
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+
+One can also INSERT INTO specific columns. However, you must ensure the column position and value to be inserted align. Example is also seen below:
+INSERT INTO Customers (CustomerName, City, Country)
+VALUES ('Cardinal', 'Stavanger', 'Norway');
+
+
+SQL NULL VALUES
+
+A field with a NULL value is a field with no value.
+If a field in a table is optional, it is possible to insert a new record or update a record without adding a value to this field. Then, the field will be saved with a NULL value.
+
+Note: A NULL value is different from a zero value or a field that contains spaces. A field with a NULL value is one that has been left blank during record creation!
+Also important to note that NULL can not be used along with comparison operators. Instead we use the IS NULL and IS NOT NULL syntax to determine if a column or table is NULL or NOT
+
+The IS NULL Operator
+The IS NULL operator is used to test for empty values (NULL values).
+The following SQL lists all customers with a NULL value in the "Address" field:
+
+Example
+SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NULL;
+
+The IS NOT NULL Operator
+The IS NOT NULL operator is used to test for non-empty values (NOT NULL values).
+The following SQL lists all customers with a value in the "Address" field:
+
+Example
+SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NOT NULL;
+
+SQL UPDATE STATEMENT
+
+The UPDATE statement is used to modify the existing records in a table.
+
+UPDATE Syntax
+
+UPDATE Customers
+SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+WHERE CustomerID = 1;
+
+Note: Be careful when updating records in a table! Notice the WHERE clause in the UPDATE statement. The WHERE clause specifies which record(s) that should be updated. If you omit the WHERE clause, all records in the table will be updated! It can be used to update single or mutiple columns. 
+
+UPDATE Multiple Records
+It is the WHERE clause that determines how many records will be updated.
+The following SQL statement will update the ContactName to "Juan" for all records where country is "Mexico":
+
+Example
+UPDATE Customers
+SET ContactName='Juan'
+WHERE Country='Mexico';
+
 
 
 Excel -> File -> Export -
