@@ -90,6 +90,13 @@ NOTE THAT this examplw also applies to AND & NOT. However, the IN clause is used
 SELECT * FROM Customers
 WHERE NOT Country='Germany';
 
+THEY CAN ALSO BE COMBINED
+
+SELECT * FROM Customers
+WHERE Country='Germany' AND (City='Berlin' OR City='München');
+
+
+
 Excel -> File -> Export -
 ```
 
