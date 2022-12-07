@@ -144,7 +144,6 @@ FROM Customers
 WHERE Address IS NOT NULL;
 
 SQL UPDATE STATEMENT
-
 The UPDATE statement is used to modify the existing records in a table.
 
 UPDATE Syntax
@@ -164,6 +163,197 @@ UPDATE Customers
 SET ContactName='Juan'
 WHERE Country='Mexico';
 
+SQL DELETE Statement
+The DELETE statement is used to delete existing records in a table.
+
+DELETE Syntax
+DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+
+Note: Be careful when deleting records in a table! Notice the WHERE clause in the DELETE statement. The WHERE clause specifies which record(s) should be deleted. If you omit the WHERE clause, all records in the table will be deleted!
+
+THE SQL TOP, LIMIT, FETCH FIRST AND ROWNUM Clause
+
+The SQL SELECT TOP Clause
+The SELECT TOP clause is used to specify the number of records to return.
+
+The SELECT TOP clause is useful on large tables with thousands of records. Returning a large number of records can impact performance.
+
+Note: Not all database systems support the SELECT TOP clause. MySQL supports the LIMIT clause to select a limited number of records, while Oracle uses FETCH FIRST n ROWS ONLY and ROWNUM.
+
+SQL Server / MS Access Syntax:
+
+SELECT TOP number|percent column_name(s)
+FROM table_name
+WHERE condition;
+MySQL Syntax:
+
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+LIMIT number;
+Oracle 12 Syntax:
+
+SELECT column_name(s)
+FROM table_name
+ORDER BY column_name(s)
+FETCH FIRST number ROWS ONLY;
+Older Oracle Syntax:
+
+SELECT column_name(s)
+FROM table_name
+WHERE ROWNUM <= number;
+Older Oracle Syntax (with ORDER BY):
+
+SELECT *
+FROM (SELECT column_name(s) FROM table_name ORDER BY column_name(s))
+WHERE ROWNUM <= number;
+
+The SQL MIN() and MAX() Functions
+
+The MIN() function returns the smallest value of the selected column.
+The MAX() function returns the largest value of the selected column.
+
+MIN() Syntax  [For a MAX question, simply replace MIN with MAX]
+SELECT MIN(Price) AS SmallestPrice
+FROM Products;
+
+The SQL COUNT(), AVG() and SUM() Functions
+The COUNT() function returns the number of rows that matches a specified criterion.
+
+COUNT() Syntax
+SELECT COUNT(column_name)
+FROM table_name
+WHERE condition;
+
+The AVG() function returns the average value of a numeric column. 
+AVG() Syntax
+SELECT AVG(column_name)
+FROM table_name
+WHERE condition;
+
+The SUM() function returns the total sum of a numeric column. 
+SUM() Syntax
+SELECT SUM(column_name)
+FROM table_name
+WHERE condition;
+
+
+The SQL LIKE Operator
+
+The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+
+There are two wildcards often used in conjunction with the LIKE operator:
+
+ The percent sign (%) represents zero, one, or multiple characters
+ The underscore sign (_) represents one, single character
+Note: MS Access uses an asterisk (*) instead of the percent sign (%), and a question mark (?) instead of the underscore (_).
+
+The percent sign and the underscore can also be used in combinations!
+
+LIKE Syntax
+LIKE Operator	Description
+WHERE CustomerName LIKE 'a%'	Finds any values that start with "a"
+WHERE CustomerName LIKE '%a'	Finds any values that end with "a"
+WHERE CustomerName LIKE '%or%'	Finds any values that have "or" in any position
+WHERE CustomerName LIKE '_r%'	Finds any values that have "r" in the second position
+WHERE CustomerName LIKE 'a_%'	Finds any values that start with "a" and are at least 2 characters in length
+WHERE CustomerName LIKE 'a__%'	Finds any values that start with "a" and are at least 3 characters in length
+WHERE ContactName LIKE 'a%o'	Finds any values that start with "a" and ends with "o"
+
+LIKE SYNTAX EXAMPLE
+SELECT * FROM Customers
+WHERE CustomerName LIKE 'a%';
+
+
+The SQL IN Operator
+
+The IN operator allows you to specify multiple values in a WHERE clause.
+The IN operator is a shorthand for multiple OR conditions.
+
+IN Syntax
+The following SQL statement selects all customers that are located in "Germany", "France" or "UK":
+
+Example
+SELECT * FROM Customers
+WHERE Country IN ('Germany', 'France', 'UK');
+
+The following SQL statement selects all customers that are from the same countries as the suppliers:
+
+Example
+SELECT * FROM Customers
+WHERE Country IN (SELECT Country FROM Suppliers);
+
+
+The SQL BETWEEN Operator
+
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates.
+The BETWEEN operator is inclusive: begin and end values are included. 
+
+BETWEEN Syntax
+he following SQL statement selects all products with a price between 10 and 20:
+
+Example
+SELECT * FROM Products
+WHERE Price BETWEEN 10 AND 20;
+
+NOT BETWEEN Example
+To display the products outside the range of the previous example, use NOT BETWEEN: This means other prices within the 10 - 20 price range will not be returned. only those less than 10 and above 20 will be returned.
+
+Example
+SELECT * FROM Products
+WHERE Price NOT BETWEEN 10 AND 20;
+
+
+SQL Aliases 'AS'
+
+SQL aliases are used to give a table, or a column in a table, a temporary name.
+Aliases are often used to make column names more readable.
+An alias only exists for the duration of that query. It doesnt change the column or table name in the database. Also the type of DBMS will determine how the syntax would be written
+An alias is created with the AS keyword.
+
+Alias Column Syntax
+The following SQL statement creates two aliases, one for the CustomerID column and one for the CustomerName column:
+
+Example
+SELECT CustomerID AS ID, CustomerName AS Customer
+FROM Customers;
+
+The following SQL statement creates an alias named "Address" that combine four columns (Address, PostalCode, City and Country):
+
+Example
+SELECT CustomerName, Address + ', ' + PostalCode + ' ' + City + ', ' + Country AS Address
+FROM Customers;
+
+Note: To get the SQL statement above to work in MySQL use the following:
+
+SELECT CustomerName, CONCAT(Address,', ',PostalCode,', ',City,', ',Country) AS Address
+FROM Customers;
+Note: To get the SQL statement above to work in Oracle use the following:
+
+SELECT CustomerName, (Address || ', ' || PostalCode || ' ' || City || ', ' || Country) AS Address
+FROM Customers;
+
+Alias for Tables Example
+The following SQL statement selects all the orders from the customer with CustomerID=4 (Around the Horn). We use the "Customers" and "Orders" tables, and give them the table aliases of "c" and "o" respectively (Here we use aliases to make the SQL shorter):
+
+Example
+SELECT o.OrderID, o.OrderDate, c.CustomerName
+FROM Customers AS c, Orders AS o
+WHERE c.CustomerName='Around the Horn' AND c.CustomerID=o.CustomerID;
+
+The following SQL statement is the same as above, but without aliases:
+
+Example
+SELECT Orders.OrderID, Orders.OrderDate, Customers.CustomerName
+FROM Customers, Orders
+WHERE Customers.CustomerName='Around the Horn' AND Customers.CustomerID=Orders.CustomerID;
+
+Aliases can be useful when:
+
+There are more than one table involved in a query
+Functions are used in the query
+Column names are big or not very readable
+Two or more columns are combined together
 
 
 Excel -> File -> Export -
