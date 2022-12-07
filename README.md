@@ -76,6 +76,20 @@ BETWEEN	Between a certain range
 LIKE	Search for a pattern	
 IN	To specify multiple possible values for a column
 
+## The SQL AND, OR and NOT Operators
+
+The AND operator displays a record if all the conditions separated by AND are TRUE.
+The OR operator displays a record if any of the conditions separated by OR is TRUE.
+The NOT operator displays a record if the condition(s) is NOT TRUE.
+
+SELECT * FROM Customers
+WHERE City='Berlin' OR City='München';
+
+NOTE THAT this examplw also applies to AND & NOT. However, the IN clause is used when you dont want to use multiple OR in the code. The example for NOT is given below.
+
+SELECT * FROM Customers
+WHERE NOT Country='Germany';
+
 Excel -> File -> Export -
 ```
 
