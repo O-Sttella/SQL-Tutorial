@@ -366,7 +366,7 @@ Excel -> File -> Export -
 </details>
 
 <details>
-    <summary> SQL JOINS </summary>
+    <summary>6. SQL JOINS </summary>
 
 ```bs
 
@@ -409,7 +409,88 @@ SELECT Orders.OrderID, Employees.LastName, Employees.FirstName
 FROM Orders
 RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
 ORDER BY Orders.OrderID;
+
 Note: The RIGHT JOIN keyword returns all records from the right table (Employees), even if there are no matches in the left table (Orders)
+
+SQL FULL OUTER JOIN Keyword
+
+The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records.
+Tip: FULL OUTER JOIN and FULL JOIN are the same.
+
+FULL OUTER JOIN Syntax
+
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+FULL OUTER JOIN Orders ON Customers.CustomerID=Orders.CustomerID
+ORDER BY Customers.CustomerName;
+
+SQL Self Join
+A self join is a regular join, but the table is joined with itself.
+
+Self Join Syntax
+SQL Self Join Example
+The following SQL statement matches customers that are from the same city:
+
+Example
+
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City
+FROM Customers A, Customers B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City;
+
+The SQL UNION Operator
+
+The UNION operator is used to combine the result-set of two or more SELECT statements.
+
+Every SELECT statement within UNION must have the same number of columns
+The columns must also have similar data types
+The columns in every SELECT statement must also be in the same order
+
+UNION Syntax
+The UNION operator selects only distinct values by default. To allow duplicate values, use UNION ALL:
+
+SQL UNION Example
+The following SQL statement returns the cities (only distinct values) from both the "Customers" and the "Suppliers" table:
+
+Example 1
+SELECT City FROM Customers
+UNION
+SELECT City FROM Suppliers
+ORDER BY City;
+
+Note: If some customers or suppliers have the same city, each city will only be listed once, because UNION selects only distinct values. Use UNION ALL to also select duplicate values!
+
+SQL UNION ALL Example
+The following SQL statement returns the cities (duplicate values also) from both the "Customers" and the "Suppliers" table:
+
+Example
+SELECT City FROM Customers
+UNION ALL
+SELECT City FROM Suppliers
+ORDER BY City;
+
+SQL UNION With WHERE
+The following SQL statement returns the German cities (only distinct values) from both the "Customers" and the "Suppliers" table:
+
+Example
+SELECT City, Country FROM Customers
+WHERE Country='Germany'
+UNION
+SELECT City, Country FROM Suppliers
+WHERE Country='Germany'
+ORDER BY City;
+
+SQL UNION ALL With WHERE
+The following SQL statement returns the German cities (duplicate values also) from both the "Customers" and the "Suppliers" table:
+
+Example
+SELECT City, Country FROM Customers
+WHERE Country='Germany'
+UNION ALL
+SELECT City, Country FROM Suppliers
+WHERE Country='Germany'
+ORDER BY City;
 
 
 ```
