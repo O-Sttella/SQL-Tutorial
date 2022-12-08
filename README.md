@@ -366,9 +366,51 @@ Excel -> File -> Export -
 </details>
 
 <details>
-    <summary>6. sample</summary>
+    <summary> SQL JOINS </summary>
 
 ```bs
+
+A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+
+Notice that the "CustomerID" column in the "Orders" table refers to the "CustomerID" in the "Customers" table. The relationship between the two tables above is the "CustomerID" column.
+
+Then, we can create the following SQL statement (that contains an INNER JOIN), that selects records that have matching values in both tables:
+
+Example
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+
+Different Types of SQL JOINs
+Here are the different types of the JOINs in SQL:
+
+(INNER) JOIN: Returns records that have matching values in both tables
+LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+
+SQL INNER JOIN Example
+The following SQL statement selects all orders with customer information:
+
+Example
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+
+SQL RIGHT JOIN Keyword
+The RIGHT JOIN keyword returns all records from the right table (table2), and the matching records from the left table (table1). The result is 0 records from the left side, if there is no match.
+
+RIGHT JOIN Syntax
+SQL RIGHT JOIN Example
+The following SQL statement will return all employees, and any orders they might have placed:
+
+Example
+SELECT Orders.OrderID, Employees.LastName, Employees.FirstName
+FROM Orders
+RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+ORDER BY Orders.OrderID;
+Note: The RIGHT JOIN keyword returns all records from the right table (Employees), even if there are no matches in the left table (Orders)
+
 
 ```
 
